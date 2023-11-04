@@ -6,10 +6,10 @@ import (
 	"strings"
 )
 
-type FrameRate string // typically: 25/1 or 30000/1001
+type Fraction string // typically: 25/1, 30000/1001 or 1/90000 etc
 
 // Value returns the float value for the given framerate, or math.NaN() if the value could not be parsed
-func (f FrameRate) Value() float64 {
+func (f Fraction) Value() float64 {
 	p := strings.IndexByte(string(f), '/')
 	if p == -1 {
 		// parse as float
