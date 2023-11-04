@@ -8,8 +8,9 @@ import (
 )
 
 type File struct {
-	Streams  []*Stream `json:"streams"`
-	Format   *Format   `json:"format"`
+	Streams  []*Stream  `json:"streams"`
+	Chapters []*Chapter `json:"chapters"`
+	Format   *Format    `json:"format"`
 	filename string
 }
 

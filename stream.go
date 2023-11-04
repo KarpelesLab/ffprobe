@@ -14,14 +14,30 @@ type Stream struct {
 	CodedHeight    int       `json:"coded_height"`
 	ClosedCaptions int       `json:"closed_captions"`
 	FrameRate      FrameRate `json:"r_frame_rate"`
+	AvgFrameRate   FrameRate `json:"avg_frame_rate"`
 	SampleRate     int       `json:"sample_rate,string"`
 	Duration       float64   `json:"duration,string"`
 	StartTime      float64   `json:"start_time,string"`
 	StartPTS       int       `json:"start_pts"`
 
 	Disposition *struct {
-		Default int `json:"default"`
-		Dub     int `json:"dub"`
+		Default         int `json:"default"`
+		Dub             int `json:"dub"`
+		Original        int `json:"original"`
+		Comment         int `json:"comment"`
+		Lyrics          int `json:"lyrics"`
+		Karaoke         int `json:"karaoke"`
+		Forced          int `json:"forced"`
+		HearingImpaired int `json:"hearing_impaired"`
+		VisualImpaired  int `json:"visual_impaired"`
+		CleanEffects    int `json:"clean_effects"`
+		AttachedPic     int `json:"attached_pic"`
+		TimedThumbnails int `json:"timed_thumbnails"`
+		Captions        int `json:"captions"`
+		Descriptions    int `json:"descriptions"`
+		Metadata        int `json:"metadata"`
+		Dependent       int `json:"dependent"`
+		StillImage      int `json:"still_image"`
 	} `json:"disposition,omitempty"`
 
 	Tags map[string]string `json:"tags"`
