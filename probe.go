@@ -14,6 +14,37 @@ type File struct {
 	filename string
 }
 
+// Video returns the first video stream of the file or nil if none found
+func (info *File) Video() *Stream {
+	return info.GetStream("video")
+}
+
+// Audio returns the first audio stream of the file or nil if none found
+func (info *File) Audio() *Stream {
+	return info.GetStream("audio")
+}
+
+// GetStreams returns all the streams in the file of a given codec type
+func (info *File) GetStreams(typ string) []*Stream {
+	var res []*Stream
+	for _, s := range info.Streams {
+		if s.CodecType == typ {
+			res = append(res, s)
+		}
+	}
+	return res
+}
+
+// GetStream returns the first stream of a given type or nil if no such stream
+func (info *File) GetStream(typ string) *Stream {
+	for _, s := range info.Streams {
+		if s.CodecType == typ {
+			return s
+		}
+	}
+	return nil
+}
+
 func Probe(fn string) (*File, error) {
 	var info *File
 	err := runutil.RunJson(&info, exe("ffprobe"), "-print_format", "json", "-hide_banner", "-loglevel", "warning", "-show_format", "-show_streams", "-show_chapters", fn)
