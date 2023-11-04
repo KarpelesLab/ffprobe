@@ -15,10 +15,13 @@ type Stream struct {
 	ClosedCaptions int      `json:"closed_captions"`
 	FrameRate      Fraction `json:"r_frame_rate"`
 	AvgFrameRate   Fraction `json:"avg_frame_rate"`
+	TimeBase       Fraction `json:"time_base"`
 	SampleRate     int      `json:"sample_rate,string"`
 	Duration       float64  `json:"duration,string"`
-	StartTime      float64  `json:"start_time,string"`
+	DurationTs     uint64   `json:"duration_ts"`
+	StartTime      float64  `json:"start_time,string"` // can be negative
 	StartPTS       int      `json:"start_pts"`
+	ExtradataSize  int      `json:"extradata_size"`
 
 	Disposition *struct {
 		Default         int `json:"default"`
