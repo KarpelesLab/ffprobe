@@ -1,7 +1,7 @@
 package ffprobe
 
 type Chapter struct {
-	Id        uint64            `json:"id"`
+	Id        int64             `json:"id"`
 	TimeBase  Fraction          `json:"time_base"`
 	Start     int64             `json:"start"`
 	StartTime float64           `json:"start_time,string"`
